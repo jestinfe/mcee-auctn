@@ -12,11 +12,13 @@ CREATE TABLE tb_user(
     , rsdc_addr VARCHAR2(200) -- 거주지주소
     , brdt DATE -- 생년월일
     , last_lgn_dt DATE -- 최종로그인일시
-    , acnt_lck_yn VARCHAR2(1) -- 계정잠금여부
-    , pswd_err_nmtm NUMBER(2) -- 비밀번호오류횟수
+    , acnt_lck_yn VARCHAR2(1) DEFAULT 'N' NOT NULL -- 계정잠금여부
+    , pswd_err_nmtm NUMBER(2) DEFAULT 0 NOT NULL -- 비밀번호오류횟수
+    , del_yn VARCHAR2(1) DEFAULT 'N' NOT NULL -- 삭제여부
     , reg_id VARCHAR2(20) -- 등록자
-    , reg_dt DATE -- 등록일시
+    , reg_dt DATE DEFAULT SYSDATE NOT NULL -- 등록일시
     , mod_id VARCHAR2(20) -- 수정자
     , mod_dt DATE -- 수정일시
-    , PRIMARY KEY(id)
+    , CONSTRAINT pk_tb_user PRIMARY KEY(id)
+    , CONSTRAINT ck_tb_user_acnt_lck_yn CHECK (acnt_lck_yn IN ('Y', 'N'))
 );

@@ -2,20 +2,17 @@ package com.mcee.auctn;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
 @SpringBootApplication
 public class AuctnApplication {
 	
-	@RequestMapping("/")
-	String home() {
-		return "Hello World!";
-	}
-
+	/**
+	 * 메인 클래스는 실행만 담당한다
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(AuctnApplication.class, args);
 	}
-
+	
 }
