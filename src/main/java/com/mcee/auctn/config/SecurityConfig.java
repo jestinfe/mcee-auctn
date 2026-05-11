@@ -28,7 +28,7 @@ public class SecurityConfig {
 				.requestMatchers(
 					"/",
 					"/com/lgn/lgn.do",
-					"/com/lgn/mbrJoin.do",
+					"/com/mbrJoin/mbrJoin.do",
 					"/css/**",
 					"/images/**",
 					"/js/**"
@@ -43,13 +43,13 @@ public class SecurityConfig {
 				.defaultSuccessUrl("/com/main/main.do", true) // true로 설정하면 이전 요청과 상관없이 지정한 URL로 이동한다.
 				.failureUrl("/com/lgn/lgn.do?error")
 				.permitAll()
+			)
+			.logout((logout) -> logout
+				.logoutUrl("/com/lgn/lgt.do")
+				.logoutSuccessUrl("/com/lgn/lgnProc.do?lgt") // redirect
+				.invalidateHttpSession(true)
+				.deleteCookies("JSESSIONID")
 			);
-//			.logout((logout) -> logout
-//				.logoutUrl(null)
-//				.logoutSuccessUrl(null)
-//				.invalidateHttpSession(true)
-//				.deleteCookies("JSESSIONID")
-//			);
 		
 		return http.build();
 	}

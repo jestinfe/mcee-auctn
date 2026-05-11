@@ -1,5 +1,8 @@
 package com.mcee.auctn.com.lgn.mapper;
 
-public class LgnMapper {
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface LgnMapper {
 
 }

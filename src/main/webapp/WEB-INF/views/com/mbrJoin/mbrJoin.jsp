@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
     
 <!DOCTYPE html>
 <html>
@@ -10,17 +11,22 @@
 </head>
 <body>
 
-<div class="join-page">
-    <div class="join-box">
+<div class="mbrjoin-page">
+    <div class="mbrjoin-box">
+    
         <h1>회원가입</h1>
 
         <c:if test="${not empty msg}">
-            <p style="color:red;">${msg}</p>
+            <p style="color:red;"><c:out value="${msg}" /></p>
         </c:if>
 
         <form id="mbrJoinForm"
-              action="<c:url value='/lgn/mbrJoin.do' />"
-              method="post">
+            action="<c:url value='/com/mbrJoin/mbrJoin.do' />"
+            method="post">
+              
+            <input type="hidden"
+              	name="${_csrf.parameterName}"
+              	value="${_csrf.token}" />
 
             <div>
                 <label for="id">아이디</label>
@@ -29,7 +35,7 @@
                        name="id"
                        maxlength="20"
                        autocomplete="username"
-                       required>
+                       required="required">
             </div>
 
             <div>
@@ -39,7 +45,7 @@
                        name="pswd"
                        maxlength="72"
                        autocomplete="new-password"
-                       required>
+                       required="required">
             </div>
 
             <div>
@@ -48,7 +54,7 @@
                        id="flnm"
                        name="flnm"
                        maxlength="40"
-                       required>
+                       required="required">
             </div>
 
             <div>
@@ -65,7 +71,7 @@
                 <input type="text"
                        id="rsdcAddr"
                        name="rsdcAddr"
-                       maxlength="200">
+                       maxlength="66">
             </div>
 
             <div>
@@ -78,7 +84,7 @@
             <button type="submit">회원가입</button>
 
             <div>
-                <a href="<c:url value='/lgn/lgn' />">로그인 화면으로 이동</a>
+                <a href="<c:url value='/com/lgn/lgn.do' />">로그인 화면으로 이동</a>
             </div>
         </form>
     </div>

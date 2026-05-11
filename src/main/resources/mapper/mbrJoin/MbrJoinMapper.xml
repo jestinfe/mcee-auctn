@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mcee.auctn.com.mbrJoin.mapper.MbrJoinMapper">
+
+<select id="countById" resultType="int">
+	SELECT
+		COUNT(*)
+	FROM
+		tb_user
+	WHERE
+		id = #{id}
+</select>
+
+<insert id="insertMbr">
+	INSERT INTO tb_user (
+		  id
+	    , pswd
+	    <if test="(flnm != null) and (flnm != '')">
+	    , flnm
+	    </if>
+	    <if test="(mblTelno != null) and (mblTelno != '')">
+	    , mbl_telno
+	    </if>
+	    <if test="(rsdcAddr != null) and (rsdcAddr != '')">
+	    , rsdc_addr
+	    </if>
+	    <if test="brdt != null">
+	    , brdt
+	    </if>
+	    , reg_id
+	) VALUES (
+		  #{id}
+	    , #{pswd}
+	    <if test="(flnm != null) and (flnm != '')">
+	    , #{flnm}
+	    </if>
+	    <if test="(mblTelno != null) and (mblTelno != '')">
+	    , #{mblTelno}
+	    </if>
+	    <if test="(rsdcAddr != null) and (rsdcAddr != '')">
+	    , #{rsdcAddr}
+	    </if>
+	    <if test="brdt != null">
+	    , #{brdt}
+	    </if>
+	    , #{id}
+	)
+</insert>
+
+</mapper>

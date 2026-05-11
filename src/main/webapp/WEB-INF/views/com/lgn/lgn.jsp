@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html>
@@ -12,6 +13,11 @@
 <body>
 	<div class="lgn-page">
 		<div class="lgn-box">
+		
+			<c:if test="${not empty msg}">
+				<p style="color:blue;"><c:out value="${msg}" /></p>
+			</c:if>
+		
 			<form id="lgnForm"
 				class="lgn-form"
 				action="<c:url value='/com/lgn/lgnProc.do' />"
@@ -27,7 +33,8 @@
 						<input type="text"
 							id="id"
 							name="id"
-							autocomplete="username">
+							autocomplete="username"
+							required>
 					</div>
 
 					<div class="input-wrap" id="pwWrap">
@@ -35,11 +42,12 @@
 						<input type="password"
 							id="pswd"
 							name="pswd"
-							autocomplete="current-password">
+							autocomplete="current-password"
+							required>
 					</div>
 				</div>
 
-				<button type="submit" class="lgn-btn" id="lgnBtn" disabled>
+				<button type="submit" class="lgn-btn" id="lgnBtn" >
 					로그인
 				</button>
 
@@ -48,7 +56,7 @@
 					<span class="divider">|</span>
 					<a href="<c:url value='' />">아이디 찾기</a>
 					<span class="divider">|</span>
-					<a href="<c:url value='/com/lgn/mbrJoin.do' />">회원가입</a>
+					<a href="<c:url value='/com/mbrJoin/mbrJoin.do' />">회원가입</a>
 				</div>
 			</form>
 		</div>
