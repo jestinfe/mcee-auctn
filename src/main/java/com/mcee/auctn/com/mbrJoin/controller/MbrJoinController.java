@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mcee.auctn.com.mbrJoin.service.MbrJoinService;
@@ -12,6 +13,7 @@ import com.mcee.auctn.com.mbrJoin.vo.MbrJoinReqVO;
 
 import jakarta.validation.Valid;
 
+@RequestMapping("/com/mbrJoin")
 @Controller
 public class MbrJoinController {
 	
@@ -22,12 +24,12 @@ public class MbrJoinController {
 		this.mbrJoinService = mbrJoinService;
 	}
 	
-	@GetMapping("/com/mbrJoin/mbrJoin.do")
+	@GetMapping("/mbrJoin.do")
 	public String mbrJoin() {
 		return "com/mbrJoin/mbrJoin";
 	}
 	
-	@PostMapping("/com/mbrJoin/mbrJoin.do")
+	@PostMapping("/mbrJoin.do")
 	public String join(@Valid MbrJoinReqVO mbrJoinReqVO,
 		BindingResult bindingResult,
 		RedirectAttributes redirectAttributes) {
