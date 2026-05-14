@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: auctn
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+  datasource:
+    url: jdbc:oracle:thin:@//localhost:1521/XEPDB1
+    username: scott
+    password: tiger
+
+server:
+  port: 8080
+
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
